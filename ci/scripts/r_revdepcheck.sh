@@ -27,7 +27,6 @@ apt update -y -q && \
 apt install -y \
   cmake \
   libbrotli-dev \
-  libboost-all-dev \
   libbz2-dev \
   libc-ares-dev \
   libcurl4-openssl-dev \
@@ -53,6 +52,8 @@ apt install -y \
   rapidjson-dev \
   tzdata \
   wget
+
+apt remove -y '^libboost-.*'
 
 # system dependencies needed for arrow's reverse dependencies
 apt install -y libxml2-dev \
