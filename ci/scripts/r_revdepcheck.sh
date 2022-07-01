@@ -26,7 +26,6 @@ source_dir=${1}/r
 apt update -y -q && \
 apt install -y \
   cmake \
-  libboost-all-dev \
   libbrotli-dev \
   libbz2-dev \
   libc-ares-dev \
@@ -54,6 +53,7 @@ apt install -y \
   tzdata \
   wget
 
+apt remove -y '^libboost-.*-dev$'
 # system dependencies needed for arrow's reverse dependencies
 apt install -y libxml2-dev \
   libfontconfig1-dev \
