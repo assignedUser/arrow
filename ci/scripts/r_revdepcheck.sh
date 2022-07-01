@@ -54,6 +54,7 @@ apt install -y \
   wget
 
 apt remove -y '^libboost-.*'
+rm -rf /lib/x86_64-linux-gnu/cmake/Boost-1.71.0
 # system dependencies needed for arrow's reverse dependencies
 apt install -y libxml2-dev \
   libfontconfig1-dev \
