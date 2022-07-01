@@ -53,8 +53,6 @@ apt install -y \
   tzdata \
   wget
 
-apt remove -y '^libboost-.*'
-
 # system dependencies needed for arrow's reverse dependencies
 apt install -y libxml2-dev \
   libfontconfig1-dev \
@@ -82,6 +80,9 @@ export AWS_EC2_METADATA_DISABLED=TRUE
 
 # Set crancache dir so we can cache it
 export CRANCACHE_DIR="/arrow/.crancache"
+
+# Use bundled boost to prevent issues with missing components 
+export Boost_SOURCE=BUNDLED
 
 SCRIPT="
     # We can't use RSPM binaries because we need source packages
