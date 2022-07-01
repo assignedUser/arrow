@@ -26,6 +26,7 @@ source_dir=${1}/r
 apt update -y -q && \
 apt install -y \
   cmake \
+  libboost-all-dev \
   libbrotli-dev \
   libbz2-dev \
   libc-ares-dev \
