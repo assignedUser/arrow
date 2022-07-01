@@ -53,7 +53,7 @@ apt install -y \
   tzdata \
   wget
 
-apt remove -y '^libboost-.*-dev$'
+apt remove -y '^libboost-.*'
 # system dependencies needed for arrow's reverse dependencies
 apt install -y libxml2-dev \
   libfontconfig1-dev \
