@@ -26,7 +26,7 @@ RUN git clone https://github.com/$ARROW_ORG/arrow && \
     git checkout $ARROW_REF && \
     python3 -m pip install -e dev/archery[bot]
 
-COPY app.py requirements.txt ${LAMBDA_TASK_ROOT}
+COPY app.py requirements.txt ${LAMBDA_TASK_ROOT}/
 
 RUN pip install -r requirements.txt --target ${LAMBDA_TASK_ROOT}
 CMD [ "app.handler"]

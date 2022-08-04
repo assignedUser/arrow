@@ -29,7 +29,7 @@ def handler(event, context):
     installation_id = event['installation']['id']
     payload_json = json.dumps(event)
 
-    with open('payload.json', 'w') as f:
+    with open('/tmp/payload.json', 'w') as f:
         f.write(payload_json)
 
     # setup archery env
@@ -40,7 +40,7 @@ def handler(event, context):
     os.environ["GITHUB_REPOSITORY"] = event['repository']['full_name']
     os.environ["ARROW_GITHUB_TOKEN"] = comment_token
 
-    cmd = ("archery trigger-bot --event-name issue_comment --event-payload payload.json")
+    cmd = ("archery trigger-bot --event-name issue_comment --event-payload /tmp/payload.json")
     archery_out = os.popen(cmd).read()
 
     print(archery_out)
