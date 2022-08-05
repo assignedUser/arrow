@@ -99,7 +99,7 @@ def check_config(obj, config_path):
 @click.option('--arrow-sha', '-t', default=None,
               help='Set commit SHA or Tag name explicitly, e.g. f67a515, '
                    'apache-arrow-0.11.1.')
-@click.option('--fetch/--no-fetch', default=True,
+@click.option('--no-fetch/--fetch', default=False,
               help='Fetch references (branches and tags) from the remote')
 @click.option('--dry-run/--commit', default=False,
               help='Just display the rendered CI configurations without '
