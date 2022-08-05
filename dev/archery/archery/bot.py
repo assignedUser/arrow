@@ -205,7 +205,7 @@ def _clone_arrow_and_crossbow(dest, crossbow_repo, pull_request):
     queue_path = dest / 'crossbow'
 
     # clone arrow and checkout the pull request's branch
-    git.clone("--depth=1", f'--branch={pull_request.head.ref}', pull_request.base.repo.clone_url, str(arrow_path))
+    git.clone(f'--branch={pull_request.head.ref}', pull_request.base.repo.clone_url, str(arrow_path))
 
     # clone crossbow repository
     crossbow_url = 'https://github.com/{}'.format(crossbow_repo)
