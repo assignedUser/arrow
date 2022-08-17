@@ -39,7 +39,6 @@ class ApacheArrow < Formula
   depends_on "zstd"
 
   def install
-    ENV.cxx17
     args = %W[
       -DARROW_BUILD_SHARED=OFF
       -DARROW_BUILD_UTILITIES=ON
