@@ -83,7 +83,7 @@ foreach(SRC_FILE ${PRECOMPILED_SRCS})
        -I${ARROW_BINARY_DIR}/src)
 
   if(NOT ARROW_USE_NATIVE_INT128)
-    list(APPEND PRECOMPILE_COMMAND -I${Boost_INCLUDE_DIR})
+    list(APPEND PRECOMPILE_COMMAND -I${Boost_INCLUDE_DIRS})
   endif()
   add_custom_command(OUTPUT ${BC_FILE}
                      COMMAND ${PRECOMPILE_COMMAND}

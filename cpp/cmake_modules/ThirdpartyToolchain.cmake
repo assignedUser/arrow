@@ -829,7 +829,7 @@ macro(build_boost)
 
   # This is needed by the thrift_ep build
   set(BOOST_ROOT ${BOOST_PREFIX})
-  set(Boost_INCLUDE_DIR "${BOOST_PREFIX}")
+  set(Boost_INCLUDE_DIRS "${BOOST_PREFIX}")
 
   if(ARROW_BOOST_REQUIRE_LIBRARY)
     set(BOOST_LIB_DIR "${BOOST_PREFIX}/stage/lib")
@@ -893,12 +893,12 @@ macro(build_boost)
                        STATIC
                        "${BOOST_STATIC_SYSTEM_LIBRARY}"
                        INCLUDE_DIRECTORIES
-                       "${Boost_INCLUDE_DIR}")
+                       "${Boost_INCLUDE_DIRS}")
     add_thirdparty_lib(Boost::filesystem
                        STATIC
                        "${BOOST_STATIC_FILESYSTEM_LIBRARY}"
                        INCLUDE_DIRECTORIES
-                       "${Boost_INCLUDE_DIR}")
+                       "${Boost_INCLUDE_DIRS}")
 
     externalproject_add(boost_ep
                         URL ${BOOST_SOURCE_URL}
@@ -922,9 +922,9 @@ macro(build_boost)
   add_library(Boost::headers INTERFACE IMPORTED)
   if(CMAKE_VERSION VERSION_LESS 3.11)
     set_target_properties(Boost::headers PROPERTIES INTERFACE_INCLUDE_DIRECTORIES
-                                                    "${Boost_INCLUDE_DIR}")
+                                                    "${Boost_INCLUDE_DIRS}")
   else()
-    target_include_directories(Boost::headers INTERFACE "${Boost_INCLUDE_DIR}")
+    target_include_directories(Boost::headers INTERFACE "${Boost_INCLUDE_DIRS}")
   endif()
   add_dependencies(Boost::headers boost_ep)
   # If Boost is found but one of system or filesystem components aren't found,
@@ -1055,9 +1055,9 @@ if(ARROW_USE_BOOST)
     add_library(Boost::headers INTERFACE IMPORTED)
     if(CMAKE_VERSION VERSION_LESS 3.11)
       set_target_properties(Boost::headers PROPERTIES INTERFACE_INCLUDE_DIRECTORIES
-                                                      "${Boost_INCLUDE_DIR}")
+                                                      "${Boost_INCLUDE_DIRS}")
     else()
-      target_include_directories(Boost::headers INTERFACE "${Boost_INCLUDE_DIR}")
+      target_include_directories(Boost::headers INTERFACE "${Boost_INCLUDE_DIRS}")
     endif()
   endif()
 
@@ -1091,7 +1091,7 @@ if(ARROW_USE_BOOST)
     target_compile_definitions(Boost::headers INTERFACE "BOOST_USE_WINDOWS_H=1")
   endif()
 
-  message(STATUS "Boost include dir: ${Boost_INCLUDE_DIR}")
+  message(STATUS "Boost include dir: ${Boost_INCLUDE_DIRS}")
 endif()
 
 # ----------------------------------------------------------------------
