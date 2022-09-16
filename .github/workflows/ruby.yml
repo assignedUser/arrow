@@ -47,6 +47,9 @@ concurrency:
   group: ${{ github.repository }}-${{ github.head_ref || github.sha }}-${{ github.workflow }}
   cancel-in-progress: true
 
+permissions:
+  contents: read
+
 env:
   DOCKER_VOLUME_PREFIX: ".docker/"
   ARCHERY_DOCKER_USER: ${{ secrets.DOCKERHUB_USER }}
@@ -106,8 +109,6 @@ jobs:
     runs-on: macos-latest
     if: ${{ !contains(github.event.pull_request.title, 'WIP') }}
     timeout-minutes: 60
-    strategy:
-      fail-fast: false
     env:
       ARROW_BUILD_STATIC: OFF
       ARROW_BUILD_TESTS: OFF
