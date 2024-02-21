@@ -63,6 +63,7 @@ jobs:
     outputs:
       targets: ${{ steps.detect-targets.outputs.targets }}
     steps:
+      - run: echo "${{ github.repository_id }}"
       - name: Detect targets
         id: detect-targets
         run: |
